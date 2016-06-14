@@ -1,6 +1,3 @@
-require 'colorize'
-require 'pry'
-
 class Blog
   # attr_accessor :posts
 
@@ -71,60 +68,4 @@ class Blog
 
   end
 
-
-
-
 end
-
-
-
-class Post
-
-  attr_reader :title, :date, :text
-
-  def initialize(title, date, text)
-    @title = title
-    @date = date
-    @text = text
-  end
-
-  def printme
-    puts @title
-    puts "**************"
-    puts @text
-    puts "----------------"
-  end
-
-end
-
-class SponsoredPost < Post
-  attr_reader :title, :date, :text
-
-  def initialize(title, date, text)
-    super(title, date, text)
-  end
-
-  def printme
-       puts "******#{@title}******
-     **************"
-     puts @text
-     puts "----------------"
-  end
-
-end
-
-
-
-
-blog = Blog.new
-blog.add_post Post.new("Title 1", 1, "Lorem Ipsum Dolor Sic Amet" )
-blog.add_post Post.new("Title 2", 2, "Lorem Ipsum Dolor Sic Amet" )
-blog.add_post Post.new("Title 3", 3, "Lorem Ipsum Dolor Sic Amet" )
-blog.add_post SponsoredPost.new("Title 4", 4, "Lorem Ipsum Dolor Sic Amet")
-blog.add_post Post.new("Title 5", 5, "Lorem Ipsum Dolor Sic Amet" )
-blog.add_post Post.new("Title 6", 6, "Lorem Ipsum Dolor Sic Amet" )
-blog.add_post SponsoredPost.new("Title 7", 7, "Lorem Ipsum Dolor Sic Amet")
-blog.add_post Post.new("Title 8", 8, "Lorem Ipsum Dolor Sic Amet" )
-blog.add_post Post.new("Title 9", 9, "Lorem Ipsum Dolor Sic Amet" )
-
-blog.publish_front_page
