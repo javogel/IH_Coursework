@@ -29,7 +29,9 @@ class ShoppingCart
 
   end
 
-
+  def apply_coupons
+    @items.select
+  end
 
 
 end
