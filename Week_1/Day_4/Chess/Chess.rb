@@ -7,8 +7,8 @@ class ChessValidator
 
   def initialize
     @board = []
-    @board_file = 'simple_board.txt'
-    @moves_file = 'simple_moves.txt'
+    @board_file = 'complex_board.txt'
+    @moves_file = 'complex_moves.txt'
     @moves_array = []
   end
 
@@ -95,7 +95,7 @@ class ChessValidator
 
 
 
-      puts "form #{from_converted.to_s} going to  #{to_converted.to_s}"
+      # puts "form #{from_converted.to_s} going to  #{to_converted.to_s}"
 
       validate_move(from_converted, to_converted)
   end
@@ -105,10 +105,10 @@ class ChessValidator
 
       piece_to_move = @board[from[0]][from[1]]
 
-      if @board[to[0]][to[1]] != nil
+      if @board[from[0]][from[1]] != nil
         piece_to_move.valid_piece_move(from, to, @board)
       else
-        puts "Invalid - Spot Taken"
+        puts "Invalid - piece non existent"
       end
 
   end
@@ -123,29 +123,45 @@ class Piece
     @color = color
   end
 
+  def is_spot_enemy(to,board)
+    if board[to[0]][to[1]] == nil
+      false
+    elsif board[to[0]][to[1]].color != @color
+      true
+    else
+      false
+    end
 
+  end
 
-  def is_spot_empty(to, board)
-    if board[to[0]][to[1]] != nil
+  def is_spot_open(to, board)
+    #checks whether spot is open to make move by checking if an oponents piece is there or if it is empty
+    if (board[to[0]][to[1]] != nil)
       true
     else
       false
     end
   end
 
+  #check if there are no other pieces in the way between two points
+  def check_path_open (from, to)
+    #refine
+    true
+  end
+
   def passes_move_restrictions(from, to, board)
     return true
   end
 
-
   def valid_piece_move(from, to, board)
-    if is_spot_empty(to, board) && passes_move_restrictions(from, to, board)
+    if (is_spot_open(to, board) || is_spot_enemy(to, board)) && passes_move_restrictions(from, to, board)
        puts "Valid"
     else
-      # puts "Invalid"
+      puts "Invalid"
     end
 
   end
+
 
 
 
@@ -158,6 +174,17 @@ class King < Piece
     super(color)
   end
 
+
+  def passes_move_restrictions(from, to, board)
+
+    #checks absolute value of difference and make sure it is less thna one accoridng to King's moves
+    if ( (to[0]-from[0]).abs <= 1 ) && ( (to[1]-from[1] ).abs <= 1)
+      true
+    else
+      false
+    end
+
+  end
 
 end
 
@@ -184,6 +211,8 @@ class Knight < Piece
   def initialize(color)
     super(color)
   end
+
+
 end
 
 class Bishop < Piece
@@ -192,7 +221,22 @@ class Bishop < Piece
   def initialize(color)
     super(color)
   end
+
+  def passes_move_restrictions(from, to, board)
+
+    #check that movement is diagonal
+    if  ((to[0]-from[0]).abs == (to[1]-from[1] ).abs) && check_path_open(from,to)
+      return true
+    else
+      return false
+    end
+
+
+  end
+
 end
+
+
 
 class Pawn < Piece
   attr_accessor :color
@@ -200,10 +244,42 @@ class Pawn < Piece
   def initialize(color)
     super(color)
   end
+
+
+  def passes_move_restrictions(from, to, board)
+
+    #check that the pawn moves in the right directiona ccording to color
+    if @color = "b" && !(from[0] < to[0])
+      return false
+    elsif @color = "w" && !(from[0] > to[0])
+      return false
+    end
+
+    if @color=="b"
+      primera_posicion = 1
+    elsif @color=="w"
+      primera_posicion = 6
+    end
+
+    #check that it moves only 1 step. If it moves diagonal and make sure it is eating another piece
+    if (to[0]-from[0]).abs <=1
+        if (to[1] != from[1]) && !is_spot_enemy(to, board)
+          return false
+        end
+      return true
+    end
+
+    if ((to[0]-from[0]).abs ==2) && (from[0]==primera_posicion)
+      return true
+    end
+
+  end
+
+
+
 end
 
 
 play = ChessValidator.new
 play.load_board
-# play.convert_board_to_objects
 play.load_moves
