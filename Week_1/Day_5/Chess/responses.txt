@@ -1,0 +1,12 @@
+Valid
+Valid
+Invalid - move not possible for Pawn
+Valid
+Valid
+Invalid - move not possible for Pawn
+Invalid - move not possible for Pawn
+Valid
+Valid
+Invalid - move not possible for Knight
+Valid
+Invalid - piece non existent
