@@ -103,9 +103,9 @@ class ChessValidator
 
   def validate_move(from, to)
 
-      piece_to_move = @board[from[0]][from[1]]
+      piece_to_move = @board[from[1]][from[0]]
 
-      if @board[from[0]][from[1]] != nil
+      if @board[from[1]][from[0]] != nil
         piece_to_move.valid_piece_move(from, to, @board)
       else
         puts "Invalid - piece non existent"
@@ -124,9 +124,9 @@ class Piece
   end
 
   def is_spot_enemy(to,board)
-    if board[to[0]][to[1]] == nil
+    if board[to[1]][to[0]] == nil
       false
-    elsif board[to[0]][to[1]].color != @color
+    elsif board[to[1]][to[0]].color != @color
       true
     else
       false
@@ -136,7 +136,7 @@ class Piece
 
   def is_spot_open(to, board)
     #checks whether spot is open to make move by checking if an oponents piece is there or if it is empty
-    if (board[to[0]][to[1]] != nil)
+    if (board[to[1]][to[0]] == nil)
       true
     else
       false
@@ -144,20 +144,32 @@ class Piece
   end
 
   #check if there are no other pieces in the way between two points
-  def check_path_open (from, to)
+  def check_path_open (from, to, board)
     #refine
     true
+
+
+    #Check if diagonal
+     if (to[1]-from[1]).abs == (to[0]-from[0]).abs
+
+    #check if it moves vertical
+  elsif ((to[0]==from[0])&&(to[1]!=from[1]))
+
+    #check if it moves horizontal
+  elsif ((to[1]==from[1])&&(to[0]!=from[0]))
+     to[0]-from
+     
+     end
+
   end
 
-  def passes_move_restrictions(from, to, board)
-    return true
-  end
+
 
   def valid_piece_move(from, to, board)
     if (is_spot_open(to, board) || is_spot_enemy(to, board)) && passes_move_restrictions(from, to, board)
        puts "Valid"
     else
-      puts "Invalid"
+      puts "Invalid - #{self.class} cannot move like that"
     end
 
   end
@@ -195,7 +207,21 @@ class Queen < Piece
   def initialize(color)
     super(color)
   end
+
+
+  def passes_move_restrictions(from, to, board)
+
+    if ((to[0]==from[0])&&(to[1]!=from[1]) || (to[0]==from[0])&&(to[1]!=from[1])) && check_path_open(from, to, board)
+      return true
+    else
+      return false
+    end
+
+
+  end
+
 end
+
 
 class Rook < Piece
   attr_accessor :color
@@ -203,6 +229,23 @@ class Rook < Piece
   def initialize(color)
     super(color)
   end
+
+
+  def passes_move_restrictions(from, to, board)
+
+    if ((to[0]==from[0])&&(to[1]!=from[1]) || (to[0]==from[0])&&(to[1]!=from[1])) && check_path_open(from, to, board)
+      return true
+    elsif ((to[0]-from[0]).abs == (to[1]-from[1] ).abs) && check_path_open(from,to)
+      return true
+    else
+      return false
+    end
+
+
+  end
+
+
+
 end
 
 class Knight < Piece
@@ -212,6 +255,19 @@ class Knight < Piece
     super(color)
   end
 
+
+
+
+  def passes_move_restrictions(from, to, board)
+
+    if (( (to[0]-from[0]).abs == 1 ) && ( (to[1]-from[1] ).abs == 2)) || (( (to[0]-from[0]).abs == 2 ) && ( (to[1]-from[1] ).abs == 1))
+      return true
+    else
+      return false
+    end
+
+
+  end
 
 end
 
@@ -225,7 +281,7 @@ class Bishop < Piece
   def passes_move_restrictions(from, to, board)
 
     #check that movement is diagonal
-    if  ((to[0]-from[0]).abs == (to[1]-from[1] ).abs) && check_path_open(from,to)
+    if  ((to[0]-from[0]).abs == (to[1]-from[1] ).abs) && check_path_open(from,to, board)
       return true
     else
       return false
@@ -249,9 +305,9 @@ class Pawn < Piece
   def passes_move_restrictions(from, to, board)
 
     #check that the pawn moves in the right directiona ccording to color
-    if @color = "b" && !(from[0] < to[0])
+    if (@color == "b") && !(from[1] < to[1])
       return false
-    elsif @color = "w" && !(from[0] > to[0])
+    elsif (@color == "w") && !(from[1] > to[1])
       return false
     end
 
@@ -262,14 +318,14 @@ class Pawn < Piece
     end
 
     #check that it moves only 1 step. If it moves diagonal and make sure it is eating another piece
-    if (to[0]-from[0]).abs <=1
-        if (to[1] != from[1]) && !is_spot_enemy(to, board)
+    if (to[1]-from[1]).abs ==1
+        if (to[0] != from[0]) && !is_spot_enemy(to, board)
           return false
         end
       return true
     end
 
-    if ((to[0]-from[0]).abs ==2) && (from[0]==primera_posicion)
+    if ((to[1]-from[1]).abs ==2) && (from[1]==primera_posicion)
       return true
     end
 
