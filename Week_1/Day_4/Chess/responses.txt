@@ -1,0 +1,118 @@
+Valid
+Invalid - move not possible for Pawn
+Invalid - piece non existent
+Invalid - move not possible for King
+Valid
+Invalid - piece non existent
+Invalid - move not possible for Pawn
+Invalid - piece non existent
+Invalid - move not possible for Pawn
+Invalid - piece non existent
+Invalid - move not possible for Pawn
+Invalid - piece non existent
+Invalid - piece non existent
+Valid
+Invalid - move not possible for Bishop
+Invalid - piece non existent
+Valid
+Invalid - piece non existent
+Invalid - move not possible for Pawn
+Invalid - move not possible for Pawn
+Invalid - piece non existent
+Valid
+Valid
+Invalid - move not possible for Bishop
+Invalid - move not possible for Pawn
+Invalid - move not possible for King
+Invalid - piece non existent
+Valid
+Invalid - move not possible for Rook
+Invalid - piece non existent
+Invalid - move not possible for Knight
+Invalid - piece non existent
+Valid
+Invalid - piece non existent
+Invalid - piece non existent
+Invalid - move not possible for Bishop
+Invalid - move not possible for Pawn
+Invalid - piece non existent
+Invalid - move not possible for Pawn
+Invalid - move not possible for Queen
+Invalid - piece non existent
+Invalid - piece non existent
+Invalid - piece non existent
+Invalid - move not possible for Pawn
+Invalid - piece non existent
+Invalid - move not possible for Pawn
+Invalid - piece non existent
+Valid
+Invalid - piece non existent
+Invalid - piece non existent
+Invalid - piece non existent
+Invalid - piece non existent
+Invalid - piece non existent
+Invalid - move not possible for Rook
+Invalid - move not possible for Knight
+Invalid - move not possible for Rook
+Invalid - move not possible for Rook
+Invalid - move not possible for Rook
+Invalid - piece non existent
+Invalid - move not possible for Rook
+Invalid - piece non existent
+Invalid - move not possible for Rook
+Invalid - move not possible for Rook
+Invalid - piece non existent
+Invalid - piece non existent
+Valid
+Invalid - move not possible for Knight
+Invalid - move not possible for Knight
+Valid
+Invalid - move not possible for Rook
+Invalid - move not possible for Rook
+Invalid - piece non existent
+Invalid - piece non existent
+Invalid - move not possible for Knight
+Invalid - move not possible for Knight
+Invalid - move not possible for Knight
+Invalid - move not possible for Bishop
+Invalid - move not possible for Queen
+Invalid - piece non existent
+Invalid - move not possible for Pawn
+Invalid - move not possible for Bishop
+Invalid - piece non existent
+Valid
+Invalid - piece non existent
+Invalid - move not possible for Bishop
+Invalid - move not possible for Bishop
+Valid
+Invalid - piece non existent
+Invalid - piece non existent
+Invalid - piece non existent
+Invalid - move not possible for Knight
+Valid
+Valid
+Invalid - piece non existent
+Invalid - piece non existent
+Invalid - move not possible for King
+Invalid - move not possible for Queen
+Invalid - move not possible for King
+Invalid - piece non existent
+Invalid - move not possible for Queen
+Invalid - piece non existent
+Invalid - piece non existent
+Valid
+Valid
+Invalid - piece non existent
+Invalid - move not possible for Bishop
+Invalid - piece non existent
+Valid
+Invalid - move not possible for Pawn
+Invalid - piece non existent
+Invalid - move not possible for Bishop
+Invalid - move not possible for King
+Invalid - move not possible for King
+Valid
+Invalid - piece non existent
+Invalid - piece non existent
+Invalid - move not possible for Pawn
+Invalid - piece non existent

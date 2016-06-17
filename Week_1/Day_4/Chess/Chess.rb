@@ -4,12 +4,14 @@ require 'json'
 
 
 class ChessValidator
-
+ attr_accessor :responses
   def initialize
     @board = []
     @board_file = 'complex_board.txt'
     @moves_file = 'complex_moves.txt'
     @moves_array = []
+    @responses = []
+    @responses_file = "responses.txt"
   end
 
 
@@ -106,11 +108,27 @@ class ChessValidator
       piece_to_move = @board[from[1]][from[0]]
 
       if @board[from[1]][from[0]] != nil
-        piece_to_move.valid_piece_move(from, to, @board)
+        if piece_to_move.valid_piece_move(from, to, @board)
+          puts "Valid"
+          @responses << "Valid"
+        else
+          puts "Invalid - move not possible for #{@board[from[1]][from[0]].class}"
+          @responses << "Invalid - move not possible for #{@board[from[1]][from[0]].class}"
+        end
       else
         puts "Invalid - piece non existent"
+        @responses << "Invalid - piece non existent"
       end
 
+  end
+
+
+  def save_responses
+    open(@responses_file, 'w') do |f|
+      @responses.each do |x|
+        f << x + "\n"
+      end
+    end
   end
 
 end
@@ -125,11 +143,11 @@ class Piece
 
   def is_spot_enemy(to,board)
     if board[to[1]][to[0]] == nil
-      false
+      return false
     elsif board[to[1]][to[0]].color != @color
-      true
+      return true
     else
-      false
+      return false
     end
 
   end
@@ -137,28 +155,94 @@ class Piece
   def is_spot_open(to, board)
     #checks whether spot is open to make move by checking if an oponents piece is there or if it is empty
     if (board[to[1]][to[0]] == nil)
-      true
+      return true
     else
-      false
+      return false
     end
   end
+
 
   #check if there are no other pieces in the way between two points
   def check_path_open (from, to, board)
     #refine
-    true
-
 
     #Check if diagonal
      if (to[1]-from[1]).abs == (to[0]-from[0]).abs
+       iterations_y = (to[1]-from[1])
+       iterations_x = (to[0]-from[0])
+
+          if (iterations_x > 0) && (iterations_y > 0)
+            iterations_x.times do |x|
+              if !is_spot_open([from[0]+x,from[1]+x],board)
+                return false
+              end
+            end
+
+          elsif (iterations_x > 0) && (iterations_y < 0)
+              iterations_x.times do |x|
+                if !is_spot_open([from[0]+x,from[1]-x],board)
+                  return false
+                end
+              end
+
+          elsif (iterations_x < 0) && (iterations_y > 0)
+                iterations_x.times do |x|
+                if !is_spot_open([from[0]-x,from[1]+x],board)
+                  return false
+                end
+              end
+
+          elsif (iterations_x < 0) && (iterations_y < 0)
+                iterations_x.times do |x|
+                if !is_spot_open([from[0]-x,from[1]-x],board)
+                  return false
+                end
+              end
+          end
+
+       return true
+
+
 
     #check if it moves vertical
-  elsif ((to[0]==from[0])&&(to[1]!=from[1]))
+     elsif ((to[0]==from[0])&&(to[1]!=from[1]))
+
+       iterations = (to[1]-from[1])
+          if iterations > 0
+            iterations.times do |x|
+              if !is_spot_open([from[0],from[1]+x],board)
+                return false
+              end
+            end
+          elsif iterations < 0
+            iterations.times do |x|
+              if !is_spot_open([from[0],from[1]-x],board)
+                return false
+              end
+            end
+          end
+
+       return true
 
     #check if it moves horizontal
-  elsif ((to[1]==from[1])&&(to[0]!=from[0]))
-     to[0]-from
-     
+      elsif ((to[1]==from[1])&&(to[0]!=from[0]))
+        iterations = (to[0]-from[0])
+           if iterations > 0
+             iterations.times do |x|
+               if !is_spot_open([from[0]+x,from[1]],board)
+                 return false
+               end
+             end
+           elsif iterations < 0
+             iterations.times do |x|
+               if !is_spot_open([from[0]-x,from[1]],board)
+                 return false
+               end
+             end
+           end
+
+        return true
+
      end
 
   end
@@ -167,17 +251,18 @@ class Piece
 
   def valid_piece_move(from, to, board)
     if (is_spot_open(to, board) || is_spot_enemy(to, board)) && passes_move_restrictions(from, to, board)
-       puts "Valid"
+      #  puts "Valid"
+       return true
     else
-      puts "Invalid - #{self.class} cannot move like that"
+      # puts "Invalid - #{self.class} cannot move like that"
+      return false
     end
 
   end
 
-
-
-
 end
+
+
 
 class King < Piece
   attr_accessor :color
@@ -191,9 +276,9 @@ class King < Piece
 
     #checks absolute value of difference and make sure it is less thna one accoridng to King's moves
     if ( (to[0]-from[0]).abs <= 1 ) && ( (to[1]-from[1] ).abs <= 1)
-      true
+      return true
     else
-      false
+      return false
     end
 
   end
@@ -235,7 +320,7 @@ class Rook < Piece
 
     if ((to[0]==from[0])&&(to[1]!=from[1]) || (to[0]==from[0])&&(to[1]!=from[1])) && check_path_open(from, to, board)
       return true
-    elsif ((to[0]-from[0]).abs == (to[1]-from[1] ).abs) && check_path_open(from,to)
+    elsif ((to[0]-from[0]).abs == (to[1]-from[1] ).abs) && check_path_open(from,to, board)
       return true
     else
       return false
@@ -339,3 +424,4 @@ end
 play = ChessValidator.new
 play.load_board
 play.load_moves
+play.save_responses
