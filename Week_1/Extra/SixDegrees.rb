@@ -40,6 +40,8 @@ class Parser
     if !@people_mentions.include?(person.to_sym)
       @people_mentions[person.to_sym] = []
       @first_degree[person.to_sym] = []
+      @second_degree[person.to_sym] = []
+      @third_degree[person.to_sym] = []
     end
 
 
@@ -108,13 +110,26 @@ class Parser
     @people_mentions.each do |mentioner, mentions|
         mentions.each do |name_mentioned|
 
-            if !(@first_degree[name_mentioned.to_sym].include? mentioner.to_s)
+            if !(@people_mentions[name_mentioned.to_sym].include? mentioner.to_s)
               @second_degree[mentioner].push(name_mentioned)
+
             end
 
         end
     end
 
+
+
+    # @first_degree.each do |name, connections|
+    #   connections.each do |connection|
+    #     if !(@first_degree[connection.to_sym].include? name.to_s)
+    #       @second_degree[name].push(connection)
+    #
+    #     end
+    #
+    #     puts @second_degree
+    #   end
+    # end
 
   end
 
@@ -127,7 +142,9 @@ parsy = Parser.new
 parsy.read_conversations
 parsy.parse_text
 parsy.calculate_first_degree
+# parsy.calculate_second_degree
+
 
 puts parsy.first_degree
-puts parsy.second_degree
+# puts parsy.second_degree
 # puts  parsy.people_mentions
