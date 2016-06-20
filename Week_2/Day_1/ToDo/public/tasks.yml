@@ -1,0 +1,35 @@
+---
+Josh:
+- !ruby/object:Task
+  content: !ruby/object:Task
+    content: Walk the dog
+    id: 1
+    complete: false
+    created_at: 2016-06-20 17:01:37.841568000 +02:00
+    updated_at: 
+  id: 4
+  complete: false
+  created_at: 2016-06-20 17:01:37.841575000 +02:00
+  updated_at: 
+- !ruby/object:Task
+  content: !ruby/object:Task
+    content: Buy the milk
+    id: 2
+    complete: false
+    created_at: 2016-06-20 17:01:37.841571000 +02:00
+    updated_at: 
+  id: 5
+  complete: false
+  created_at: 2016-06-20 17:01:37.841577000 +02:00
+  updated_at: 
+- !ruby/object:Task
+  content: !ruby/object:Task
+    content: Make my todo list into a web app
+    id: 3
+    complete: false
+    created_at: 2016-06-20 17:01:37.841573000 +02:00
+    updated_at: 
+  id: 6
+  complete: false
+  created_at: 2016-06-20 17:01:37.841578000 +02:00
+  updated_at: 
