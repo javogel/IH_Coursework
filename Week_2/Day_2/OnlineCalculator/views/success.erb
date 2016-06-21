@@ -1,0 +1,24 @@
+<!-- views/all.erb -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>All Calculations | Online Calculator</title>
+</head>
+<body>
+  <h1>Success</h1>
+
+
+<h1> <%= @resulting_string %>  </h1>
+<h2> Do you want to save the result of <%= @result %> for next time? </h2>
+
+
+<form action="/save" method="POST">
+
+<input type="number" name="result" value="<%= @result %>">
+<button type="submit" name="operation" value="save">Save</button>
+
+</form>
+
+
+</body>
+</html>
