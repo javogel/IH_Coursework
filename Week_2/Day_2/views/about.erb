@@ -1,1 +1,30 @@
-<h1> testing</h1>
+
+
+
+
+
+<% color = @colors.sample%>
+
+<div style="background:<%= color %>; width: 100%; height: 100%; margin:-5px; text-align: center; padding-top: 80px;">
+
+<% if Date.today.tuesday?  %>
+<h1 style="color: white;"> Welcome to Johannus' website! </h1>
+<% end %>
+
+<p> Please refresh to get a new background color. Oh and by the way the current time is <%= Time.now.asctime %></p>
+
+
+<img src="grafitti.jpg" style="width: 400px; height: 200px;">
+
+
+<ul>
+<% @colors.each do |c| %>
+
+<li> <%= c %> </li>
+<% end %>
+
+</ul>
+
+
+
+</div>
