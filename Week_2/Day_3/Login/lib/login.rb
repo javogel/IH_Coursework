@@ -1,16 +1,26 @@
+require 'pry'
+
 class Login
   def initialize
-
+    @credentials = {:john => "johannus", :patv => "ironhack", :valentina => "mirror" }
   end
 
 
-  def self.validate(user, pw)
-    @@credentials = {:john => "johannus", :patv => "ironhack", :valentina => "mirror" }
-    if ( @@credentials[user.to_sym] != nil ) && @@credentials[user.to_sym] == pw
+
+  def validate(user, pw)
+
+    if ( @credentials[user.to_sym] != nil ) && @credentials[user.to_sym] == pw
       true
-    else
+    elsif  ( @credentials[user.to_sym] == nil )
       false
     end
+  end
+
+
+  def sign_up(user, pw)
+    @credentials[user.to_sym] = pw
+    
+
   end
 
 end
