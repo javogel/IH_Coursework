@@ -1,6 +1,7 @@
 # server.rb
-require "sinatra"
-require_relative "./lib/Calculator"
+require 'sinatra'
+require 'sinatra/reloader' 
+require_relative './lib/Calculator'
 
 
 get "/" do
@@ -64,7 +65,7 @@ post "/calculate_all" do
   @result = Calculator.calculate(@first, @second, @operation )
   if @operation=="load"
     @lastresult = Calculator.load
-    redirect to("/all?lastresult=#{@lastresult}")    
+    redirect to("/all?lastresult=#{@lastresult}")
   else
     redirect to("/success?result=#{@result}&first=#{@first}&second=#{@second}&operation=#{@operation}")
   end
