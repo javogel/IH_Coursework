@@ -9,8 +9,9 @@ blog.add_post Post.new("title2", "Tuesday", "Hello My name is post 2", "Category
 blog.add_post Post.new("title3", "Monday", "Hello My name is post 3", "Category3", "John")
 
 
+
  get "/" do
-   @posts = blog.posts
+   @posts = blog.latest_posts
    erb(:home)
  end
 

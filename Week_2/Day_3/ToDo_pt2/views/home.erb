@@ -9,8 +9,11 @@
 
 <ul>
 <% @todo_list.tasks.each do |x| %>
-<li> <%= x.content %> </li>
-
+  <% if x.complete? %>
+    <li> <strike> <%= x.content %> </strike> : <a href="/delete/<%= x.id %>">delete </a></li>
+  <% else %>
+    <li> <%= x.content %> : <a href="/complete/<%= x.id %>">complete </a></li>
+  <% end %>
 <% end %>
 </ul>
 

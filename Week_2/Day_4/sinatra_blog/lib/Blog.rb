@@ -10,7 +10,7 @@ class Blog
   end
 
   def latest_posts
-    return @posts.sort {|x,y| y.date <=> x.date }
+    return @posts.sort! {|x,y| y.date.to_i <=> x.date.to_i }
   end
 
   def publish_front_page

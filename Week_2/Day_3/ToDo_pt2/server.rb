@@ -8,7 +8,7 @@ require_relative('lib/TodoList.rb')
 
 
 todo_list = TodoList.new("Josh")
-todo_list.load_tasks
+# todo_list.load_tasks
 
 
 get "/" do
@@ -24,6 +24,24 @@ end
 post "/create_task" do
   @task = params[:task]
   todo_list.add_task(Task.new(@task))
+
+  redirect to("/")
+end
+
+
+get "/complete/:id" do
+  @id = params[:id].to_i
+
+  todo_list.find_task_by_id(@id).complete!
+
+  redirect to("/")
+end
+
+
+get "/delete/:id" do
+  @id = params[:id].to_i
+
+  todo_list.delete_task(@id)
 
   redirect to("/")
 end

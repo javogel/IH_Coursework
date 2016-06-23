@@ -17,12 +17,12 @@ class TodoList
       @tasks << task
     end
 
-    def delete_task(index)
-     @tasks.delete_if {|x| x.id == index}
+    def delete_task(id)
+     @tasks.delete_if {|x| x.id == id}
     end
 
-    def find_task_by_id(i)
-     @tasks.find {|x| x.id == i}
+    def find_task_by_id(id)
+     @tasks.find {|x| x.id == id}
     end
 
     def sort_by_id
