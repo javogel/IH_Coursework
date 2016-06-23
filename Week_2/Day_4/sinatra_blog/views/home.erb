@@ -1,0 +1,10 @@
+<!-- views/home.erb -->
+
+<ul>
+<% @posts.each_with_index do |post, index| %>
+<li>   <a href="/post_details/<%= index %>">  <%= post.title %> </a></li>
+<% end %>
+</ul>
+
+
+<a href="/new_post"> Click here to add a new post! </a>
