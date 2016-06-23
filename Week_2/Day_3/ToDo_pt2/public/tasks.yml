@@ -5,16 +5,16 @@ Josh:
   id: 1
   complete: false
   created_at: 2016-06-22 18:20:08.061254000 +02:00
-  updated_at: 
+  updated_at:
 - !ruby/object:Task
   content: Buy the milk
   id: 2
   complete: false
   created_at: 2016-06-22 18:20:08.061268000 +02:00
-  updated_at: 
+  updated_at:
 - !ruby/object:Task
   content: Make my todo list into a web app
   id: 3
   complete: false
   created_at: 2016-06-22 18:20:08.061270000 +02:00
-  updated_at: 
+  updated_at:

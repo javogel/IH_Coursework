@@ -1,0 +1,22 @@
+<!-- views/home.erb -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Todo List</title>
+</head>
+<body>
+  <h1>List</h1>
+
+<ul>
+<% @todo_list.tasks.each do |x| %>
+<li> <%= x.content %> </li>
+
+<% end %>
+</ul>
+
+
+<a href='/new_task'> Click here to add a new task</a>
+
+
+</body>
+</html>

@@ -32,7 +32,7 @@ class TodoList
 
 
     def add_task(task)
-      @tasks << Task.new(task)
+      @tasks << task
     end
 
     def delete_task(index)
@@ -93,3 +93,10 @@ class Task
       @updated_at = Time.now
     end
 end
+
+
+todo_list = TodoList.new("Josh")
+todo_list.add_task Task.new("Walk the dog")
+todo_list.add_task Task.new("Buy the milk")
+todo_list.add_task Task.new("Make my todo list into a web app")
+todo_list.save
