@@ -1,0 +1,17 @@
+<!-- views/movies.erb -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Movies App</title>
+</head>
+<body>
+  <h1>Search for "<%= @query  %>"</h1>
+
+<% @movies.each do |movie|%>
+
+<img src="<%= movie.poster %>" style="height:200px; width:135px;">
+
+<% end %>
+
+</body>
+</html>

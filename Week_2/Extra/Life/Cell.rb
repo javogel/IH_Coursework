@@ -10,9 +10,9 @@ class Life
       [0,0,0,0,0,0,0,0,0,0],
       [0,0,0,0,0,0,0,0,0,0],
       [0,0,0,0,0,0,0,0,0,0],
-      [0,0,0,0,1,0,0,0,0,0],
-      [0,0,0,0,1,0,0,0,0,0],
-      [0,0,0,0,1,0,0,0,0,0],
+      [0,0,0,0,0,1,0,0,0,0],
+      [0,0,0,1,0,1,0,0,0,0],
+      [0,0,0,0,1,1,0,0,0,0],
       [0,0,0,0,0,0,0,0,0,0],
       [0,0,0,0,0,0,0,0,0,0],
       [0,0,0,0,0,0,0,0,0,0]
@@ -20,25 +20,25 @@ class Life
 
 
 
-   @newgrid = [
-     [0,0,0,0,0,0,0,0,0,0],
-     [0,0,0,0,0,0,0,0,0,0],
-     [0,0,0,0,0,0,0,0,0,0],
-     [0,0,0,0,0,0,0,0,0,0],
-     [0,0,0,0,0,0,0,0,0,0],
-     [0,0,0,0,0,0,0,0,0,0],
-     [0,0,0,0,0,0,0,0,0,0],
-     [0,0,0,0,0,0,0,0,0,0],
-     [0,0,0,0,0,0,0,0,0,0],
-     [0,0,0,0,0,0,0,0,0,0]
-   ]
+
 
   end
 
 
   def play
 
-
+    @newgrid = [
+      [0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0]
+    ]
     @grid.each_with_index do |yitem, y|
       yitem.each_with_index do |xitem, x|
         neighbours = check_neighbours(y,x, @grid)
@@ -54,16 +54,16 @@ class Life
     @grid = @newgrid.dup
 
 
-    # @grid.each do |y|
-    #   y.each do |x|
-    #     if x == 0
-    #       print "   ".white.on_white
-    #     elsif x == 1
-    #       print " 1 ".green.on_green
-    #     end
-    #   end
-    #   print "\n"
-    # end
+    @grid.each do |y|
+      y.each do |x|
+        if x == 0
+          print "   ".white.on_white
+        elsif x == 1
+          print " 1 ".green.on_green
+        end
+      end
+      print "\n"
+    end
     sleep 1
     system "clear"
 
@@ -80,10 +80,7 @@ class Life
   def check_neighbours(y, x, grid)
     neighbours_array = []
 
-    # xplus =
-    # xmins
-    # yplus
-    # yminus
+
 
   if !(y == 0) && !(x == 0)
 
@@ -98,10 +95,10 @@ class Life
     neighbours_array << @grid[y][x-1]
     neighbours_array << @grid[y-1][x-1]
     neighbours_array << @grid[y-1][x+1]
-
-    if @grid[y][x] == 1
-      binding.pry
-    end
+    #
+    # if @grid[y][x] == 1
+    #   binding.pry
+    # end
 
 
   elsif !(y == 0) && (x == 0)
