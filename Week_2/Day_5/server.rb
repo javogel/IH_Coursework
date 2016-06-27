@@ -19,3 +19,8 @@ post "/search_movie" do
 
   erb(:search_movie)
 end
+
+
+array[0..20]
+newarray array with selected
+so that you dont load the whole database

@@ -10,7 +10,7 @@ nav ul {
 nav li {
  float: left;
  list-style-type: none;
- display: inline-block;
+ /*display: inline-block;*/
 }
 
 
@@ -55,5 +55,5 @@ nav li:nth-child(2n) a {
 .post img{
   width:300px;
   height:150px;
-  
+
 }
