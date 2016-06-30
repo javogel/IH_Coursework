@@ -1,19 +1,45 @@
-var phrase = 'Testing Ceasars Cipher'
+var phrase = "Et tu, brute?"
 
-function cipher(phrase) {
 
-    var split_phrase = phrase.split("");
+function cipherBuilder(shift){
 
-    var mappedLetters = split_phrase.map(function(letter){
+  return function(phrase) {
 
-        var array = [];
-        array.push(String.fromCharCode(letter.charCodeAt(0) + 3));
+      var split_phrase = phrase.split("");
 
-        return array;
-      });
+      shift = shift || - 3
 
-    encrypted = mappedLetters.join('');
-    return encrypted;
-};
+      var mappedLetters = split_phrase.map(function(letter){
+          var array = [];
+          if(letter >= "A" && letter <= "Z"){
+                var newnum = letter.charCodeAt(0) + shift
+                if(newnum > 90){
+                  newnum = newnum-26;
+                }else if (newnum < 65) {
+                  newnum = 90 - newnum;
+                };
+                array.push(String.fromCharCode(newnum));
 
-console.log(cipher(phrase));
+          } else if(letter >= "a" && letter <= "z"){
+                var newnum = letter.charCodeAt(0) + shift
+                if(newnum > 122){
+                  newnum = newnum-26;
+                }else if (newnum < 97) {
+                  newnum = 122 - newnum;
+                };
+                array.push(String.fromCharCode(newnum));
+          }else {
+            array.push(letter);
+          };
+          return array;
+        });
+
+      var encrypted = mappedLetters.join('');
+      return encrypted;
+  };
+}
+
+var caesarCipher6 = cipherBuilder(6)
+
+
+console.log(caesarCipher6(phrase));

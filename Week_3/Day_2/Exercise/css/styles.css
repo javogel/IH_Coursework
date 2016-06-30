@@ -9,13 +9,13 @@ body {
 }
 
 .profile-pic {
-      border-radius: 50%;
-      height: 30px;
+    border-radius: 50%;
+    height: 30px;
 
 }
 
 .profile-pic-square {
-    width: 80%;
+    width: 65%;
     margin: 5px;
 
 }
@@ -25,12 +25,21 @@ body {
 }
 
 .top-of-box {
+  width: 25%;
   display:flex;
   flex-direction:row;
-  /*justify-content: center;*/
-  /*align-items: center;*/
-
 }
+
+.top-of-card {
+
+  display:flex;
+  flex-direction:row;
+}
+
+.card-media{
+  width: 12%;
+}
+
 .underline {
    /*border-style: solid;*/
    border-bottom: 2px solid;
@@ -39,8 +48,10 @@ body {
 
 .big-text {
   font-size: 16px;
-
-  margin: auto;
+  margin: auto 0;
+}
+.big-text p{
+  margin-bottom: 0;
 }
 
 .small-text {
@@ -50,7 +61,29 @@ body {
 .tags-row {
   display:flex;
   flex-direction:row;
-  /*justify-content: center;*/
-  /*align-items: center;*/
+  margin: 15px 10px
+}
 
+.tags-row .fa {
+  color: #EEA850;
+  padding: 0 5px;
+  margin: auto 0;
+}
+
+.tags-row .button {
+  border: 1px solid #ccc;
+  color: #ccc;
+  padding: 0 5px;
+  margin: auto 2.5px;
+}
+
+.tags-row .button:hover {
+
+  color: red;
+
+}
+
+
+.text-row {
+  margin: 15px 10px;
 }

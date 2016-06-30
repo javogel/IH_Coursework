@@ -13,4 +13,4 @@ var resultArray = [];
 return resultArray;
 }
 
-console.log(process(exampleArray))
+console.log(process(exampleArray));
