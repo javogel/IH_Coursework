@@ -1,0 +1,16 @@
+<h1>Word Central</h1>
+
+<h2>Lipsum</h2>
+
+<form action='/lipsum' method='POST'>
+  <div>
+    <label for="lipsum">Numbers</label>
+    <input type="number" name="lipsum_text[number]" id="lipsum"></input>
+    <label for="lipsum_radio1">Word</label>
+    <input type="radio" name="lipsum_text[wop]" id="lipsum_radio" value="word">
+    <label for="lipsum_radio2">Paragraph</label>
+    <input type="radio" name="lipsum_text[wop]" id="lipsum_radio2" value="paragraph">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  </div>
+  <button type="submit">Submit text</button>
+ </form>

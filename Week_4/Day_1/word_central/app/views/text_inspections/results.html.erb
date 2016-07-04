@@ -1,0 +1,11 @@
+<p> <%= @text %> </p>
+<h2> The text is <%= @word_count%> words long</h2>
+
+<h1> Will take <strong> <%= @minutes.round(2) %> minutes </strong> to read </h1>
+
+
+
+<p>************TOP TEN WORDS**************</p>
+<%= @top_ten %>
+
+<%= link_to 'Home', home_path %>
