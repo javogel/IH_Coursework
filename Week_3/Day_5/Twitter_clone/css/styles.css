@@ -1,0 +1,98 @@
+
+
+.container-fluid{
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.navbar {
+  margin-bottom: 0;
+}
+
+.navigation{
+  height: 60px;
+  background-color: #fff ;
+  position: fixed;
+  width: 100%;
+  z-index: 99;
+
+  display: flex;
+  align-items: center;
+}
+
+.brand {
+  text-align: center;
+  color: #1da1f2
+}
+
+.row{
+ width: 100%;
+}
+
+
+.header-pic {
+  background-image: url("../headerimage.jpeg");;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: top;
+
+  height:300px;
+}
+
+
+.follow-bar{
+  height: 60px;
+  background-color: blue ;
+}
+
+.content{
+  background-color: green ;
+  height: 1000px;
+}
+
+.profile-picture img {
+  width: 60%;
+  height: 60%;
+  margin-top: -70px;
+}
+
+.left-menu ul{
+  margin: 0 auto;
+  color: #66757f;
+}
+
+
+.left-menu ul li {
+     padding-right: 8px;
+     display: inline;
+}
+
+.left-menu ul li i{
+     padding-right: 2px;
+}
+
+.right-menu-actions input{
+  border-radius: 30px ;
+  height: 35px;
+  text-align: left;
+  padding-left: 10px;
+}
+
+.right-menu-actions form, img, button{
+  display: inline;
+  margin-right: 10px;
+}
+
+.right-menu-actions img{
+  border: 2px solid grey;
+  max-width: 35px;
+}
+
+.right-menu-actions button{
+  color: white;
+}
+
+.ppthumb {
+  border: 2px solid grey;
+  width: 50px
+}

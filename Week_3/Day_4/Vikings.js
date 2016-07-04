@@ -85,9 +85,11 @@ var Fight = function(vteam, steam){
   }
 
   var dead_saxons = 0;
+  var dead_vikings = 0;
   for(i=0; i<= this.turns; i++){
     if (dead_saxons == steam.length){
       console.log("This battle is over! All Saxons are Dead.")
+
       break;
     }else{
       vteam.forEach(vikingturns);
@@ -99,10 +101,12 @@ var Fight = function(vteam, steam){
     saxon_to_fight = steam[Math.floor((Math.random() * steam.length))];
     if(viking_to_fight.health>0 && saxon_to_fight.health>0){
       new TwoFight(viking_to_fight, saxon_to_fight)
-    } else{
-      console.log("This Saxon is dead");
+    } else if (viking_to_fight.health<0){
+      console.log("This Viking is dead. No battle");
+      dead_vikings++;
+    }else if (saxon_to_fight.health<0){
+      console.log("This Saxon is dead. No battle");
       dead_saxons++;
-
     };
   };
 
