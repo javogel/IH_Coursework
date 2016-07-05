@@ -1,0 +1,22 @@
+<%# add navigation links to this file %>
+Links will go here
+<li>
+  <% if !current_page?(home_path) %>
+    <%= link_to 'home', home_path %>
+  <% end %>
+</li>
+<li>
+  <% if !current_page?(about_path) %>
+	  <%= link_to 'about', about_path %>
+  <% end %>
+</li>
+<li>
+  <% if !current_page?(blog_path) %>
+	  <%= link_to 'blog', blog_path %>
+  <% end %>
+</li>
+<li>
+  <% if !current_page?(contact_path) %>
+	  <%= link_to 'contact', contact_path %>
+  <% end %>
+</li>

@@ -1,5 +1,17 @@
 Timetracking::Application.routes.draw do
-  # The priority is based upon order of creation: first created -> highest priority.
+  get '/', to: 'site#home'
+
+  get '/contact', to: 'site#contact'
+
+  get '/say_name/:name', to: 'site#say_name'
+
+  get '/calculator', to: 'site#calculator'
+
+  post '/calculate', to: 'site#calculate'
+
+  get '/projects', to: 'projects#index'
+  # The priority is based upon order of creation: first created
+  #-> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
@@ -11,7 +23,8 @@ Timetracking::Application.routes.draw do
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
-  # Example resource route (maps HTTP verbs to controller actions automatically):
+  # Example resource route
+  # (maps HTTP verbs to controller actions automatically):
   #   resources :products
 
   # Example resource route with options:
