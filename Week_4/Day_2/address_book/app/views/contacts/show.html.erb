@@ -1,0 +1,23 @@
+
+<h1> <%= @contact.name %> </h1>
+<h2> <%= @contact.address %> </h2>
+<h2> <%= @contact.phone %> </h2>
+<h2> <%= @contact.email %> </h2>
+
+<p>
+
+
+
+  <form action='/contacts/show/<%= @id %>/favorite' method="post">
+    <input name="authenticity_token" type="hidden" value=<%= form_authenticity_token %> />
+     <button type="submit">
+       <% if @favorite == true %>
+        Unfavorite
+       <% else %>
+        Favorite
+       <% end %>
+     </button>
+  </form>
+
+
+</p>

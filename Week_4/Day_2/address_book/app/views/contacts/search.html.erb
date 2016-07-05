@@ -1,0 +1,18 @@
+<h1>Contacts#Search</h1>
+<p>Find me in app/views/contacts/index.html.erb</p>
+
+<ul>
+<% @contacts.each do |contact|%>
+
+<li><%= contact.name %> with and id of:  <%= contact.id %>. <%= link_to 'View contact', show_path(contact.id) %></li>
+
+<% end %>
+</ul>
+
+<p>
+<%= link_to 'Add new contact!', new_path %>
+</p>
+
+<p>
+<%= link_to 'View Favorites', favorites_path %>
+</p>

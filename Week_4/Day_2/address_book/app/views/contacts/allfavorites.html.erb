@@ -1,0 +1,14 @@
+<h1>Contacts#Favorites</h1>
+
+<ul>
+<% @contacts.each do |contact|%>
+
+<li><%= contact.name %> with and id of:  <%= contact.id %>. <%= link_to 'View contact', show_path(contact.id) %></li>
+
+<% end %>
+</ul>
+
+
+<p>
+<%= link_to 'Add new contact!', new_path %>
+</p>
