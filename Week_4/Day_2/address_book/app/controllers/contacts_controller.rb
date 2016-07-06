@@ -8,11 +8,14 @@ class ContactsController < ApplicationController
   end
 
   def new
+
     render 'new'
   end
 
   def create
-    Contact.create(name: params[:contact][:name], address: params[:contact][:address], phone: params[:contact][:phone], email: params[:contact][:email])
+
+    Contact.create(name: params[:contact][:name], address: params[:contact][:address], phone: params[:contact][:phone], email: params[:contact][:email], avatar: params[:contact][:avatar])
+
     redirect_to '/contacts/index'
   end
 
@@ -45,4 +48,10 @@ class ContactsController < ApplicationController
     end
     render 'search'
   end
+
+
+  def user_params
+    params.require(:user).permit(:avatar)
+  end
+
 end

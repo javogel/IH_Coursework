@@ -1,6 +1,6 @@
 <h1>Add a new contact</h1>
 
-<form action='/contacts/new' method="post">
+<form action='/contacts/new' method="post" enctype="multipart/form-data">
   <div>
 
     <label for="contact_name">Name</label>
@@ -14,25 +14,21 @@
 
   <div>
     <label for="contact_phone">Phone number</label>
-    <input type="tel" name="contact[phone]" id="contact_phone" pattern="^\d{4}-\d{3}-\d{4}$">
+    <input type="tel" name="contact[phone]" id="contact_phone" >
   </div>
 
   <div>
     <label for="contact_email">Email</label>
     <input type="email" name="contact[email]" id="contact_email">
   </div>
+    <input type="file" name="contact[avatar]" id="attachment" >
   <input name="authenticity_token" type="hidden" value="NrOp5bsjoLRuK8IW5+dQEYjKGUJDe7TQoZVvq95Wteg=" />
+
    <button type="submit">Add this contact</button>
-</form>
 
 
 
 
 
-<form action='/search' method="get">
-    <label for="search_box">Search</label>
-    <input type="text" required name="search" id="search_box">
 
-  <input name="authenticity_token" type="hidden" value="NrOp5bsjoLRuK8IW5+dQEYjKGUJDe7TQoZVvq95Wteg=" />
-   <button type="submit">Search</button>
 </form>
