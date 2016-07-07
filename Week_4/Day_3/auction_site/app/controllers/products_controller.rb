@@ -10,7 +10,8 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
-    @bid = Bid.new
+    @product = Product.find(params[:id])
+    @bid = @product.bid.new
   end
 
   # GET /products/new

@@ -18,16 +18,20 @@
 <h3> Bids: </h3>
   <ul>
     <% @product.bid.each do |bid| %>
+      <% unless bid.amount == nil %>
       <li> <%= bid.amount %> from user_id# <%= bid.user_id %>  </li>
+      <% end %>
     <% end %>
   </ul>
 </p>
 
 <% if (@product.deadline > Time.now) %>
-    <%= form_for @bid do |f| %>
+
+
+    <%= form_for [@product, @bid] do |f| %>
       <%= f.label :amount %>
       <%= f.number_field :amount %>
-      <%= hidden_field :product_id, @product.id %>
+
 
       <input type="text" name="bid[email]" placeholder="Email">
 
