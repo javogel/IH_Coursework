@@ -1,7 +1,7 @@
 class CreateProducts < ActiveRecord::Migration[5.0]
   def change
     create_table :products do |t|
-      t.references :project, index: true
+      t.references :user, index: true
       t.string :title
       t.string :description
       t.datetime :deadline

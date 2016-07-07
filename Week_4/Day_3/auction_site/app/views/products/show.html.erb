@@ -15,5 +15,29 @@
   <%= @product.deadline %>
 </p>
 
+<h3> Bids: </h3>
+  <ul>
+    <% @product.bid.each do |bid| %>
+      <li> <%= bid.amount %> from user_id# <%= bid.user_id %>  </li>
+    <% end %>
+  </ul>
+</p>
+
+<% if (@product.deadline > Time.now) %>
+    <%= form_for @bid do |f| %>
+      <%= f.label :amount %>
+      <%= f.number_field :amount %>
+      <%= hidden_field :product_id, @product.id %>
+
+      <input type="text" name="bid[email]" placeholder="Email">
+
+      <%= f.submit "bid" %>
+    <% end %>
+  <% else %>
+  <p> Bidding time is over for this product and the winner is <%= @product.highestbidder %> <p>
+<% end %>
+
+
+
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>
