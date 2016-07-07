@@ -3,7 +3,7 @@ class BidsController < ApplicationController
 def create
 
   @user = User.where('email = ?', params[:bid][:email])
-  if @user.first
+  if @users.first
       @bidder_id = @user.first.id
       @product = Product.find(params[:product_id])
       if (params[:bid][:amount].to_f >= @product.minbid.to_f) && (@bidder_id != @product.user_id)
