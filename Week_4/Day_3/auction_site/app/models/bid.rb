@@ -14,7 +14,7 @@ class Bid < ApplicationRecord
     end
     minbid = product.minbid
     if amount < minbid || amount < last_bid
-      errors.add(:expiration_date, "can't be lower than minimum bid or last bid")
+      errors.add(:amount, "can't be lower than minimum bid or last bid")
     end
   end
 
@@ -22,7 +22,7 @@ class Bid < ApplicationRecord
     product = Product.find(product_id)
     product_creator = product.user_id
     if user_id == product_creator
-      errors.add(:discount, "Product owner cannot bid on own product")
+      errors.add(:bid, "cannot come from owner of product")
     end
   end
 

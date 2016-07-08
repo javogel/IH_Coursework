@@ -3,6 +3,48 @@ class UsersController < ApplicationController
 
   # GET /users
   # GET /users.json
+
+
+  def login
+    render 'login'
+  end
+
+  def login_validation
+    @email = params[:email]
+    @password = params[:password]
+    @user = User.where('email = ?', @email).limit(1).first
+
+    if @user && (@user.password == @password)
+      session[:current_user_id] = @user.id
+      redirect_to '/dashboard'
+    else
+      render text: 'Wrong email or password'
+    end
+
+  end
+
+
+  def dashboard
+    @current_id = session[:current_user_id]
+    @products = Product.where('user_id = ?', @current_id)
+    @bids = Bid.where('user_id = ?', @current_id)
+    @bidded_products = []
+    @won_products = []
+    @bids.each do |bid|
+      if !(@bidded_products.include? Product.where('id = ?', bid.product_id))
+        @bidded_products << Product.find(bid.product_id)
+      end
+    end
+
+    @bidded_products.each do |product|
+      product_winner = product.bid.order(amount: :desc).first.user_id
+      if (session[:current_user_id] == product_winner) && !(@won_products.include?  product)
+        @won_products << product
+      end
+    end
+
+  end
+
   def index
     @users = User.all
   end

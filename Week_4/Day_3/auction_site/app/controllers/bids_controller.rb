@@ -1,10 +1,9 @@
 class BidsController < ApplicationController
 
 def create
-
-  @user = User.where('email = ?', params[:bid][:email])
-  if @users.first
-      @bidder_id = @user.first.id
+  @user = User.find(session[:current_user_id])
+  if @user
+      @bidder_id = @user.id
       @product = Product.find(params[:product_id])
       if (params[:bid][:amount].to_f >= @product.minbid.to_f) && (@bidder_id != @product.user_id)
 
@@ -15,7 +14,7 @@ def create
         render text: 'This bid is either too small or you are bidding on your own product'
       end
   else
-    render text: "Email doesn't match"
+    render text: "You must log on to bid"
   end
 end
 end

@@ -1,0 +1,28 @@
+<h3> Products: </h3>
+  <ul>
+    <% @products.each do |product| %>
+
+      <li> <%= product.title %> from user_id# <%= product.user_id %>  </li>
+
+    <% end %>
+  </ul>
+
+
+  <h3> Bidded Products: </h3>
+    <ul>
+      <% @bidded_products.each do |product| %>
+
+        <li> <%= product.title %> from user_id# <%= product.user_id %>  </li>
+
+      <% end %>
+    </ul>
+
+
+    <h3> Bids won: </h3>
+      <ul>
+        <% @won_products.each do |won| %>
+
+          <li> <%= won.title %> from user_id# <%= won.user_id %>  </li>
+
+        <% end %>
+      </ul>

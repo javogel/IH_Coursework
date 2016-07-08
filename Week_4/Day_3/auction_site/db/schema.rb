@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160707084551) do
+ActiveRecord::Schema.define(version: 20160707230341) do
 
   create_table "bids", force: :cascade do |t|
     t.integer "product_id"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20160707084551) do
     t.string   "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "password"
   end
 
 end
