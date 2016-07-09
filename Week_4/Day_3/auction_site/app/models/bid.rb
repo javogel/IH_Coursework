@@ -1,6 +1,6 @@
 class Bid < ApplicationRecord
+  belongs_to :user
   belongs_to :product
-  has_one :user
 
   validate :bid_cannot_be_lower_than_minbid_or_last, :bid_cannot_be_by_same_user
 

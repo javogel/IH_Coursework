@@ -14,4 +14,6 @@ class Product < ApplicationRecord
       return "**No highest bid**"
     end
   end
+
+  
 end

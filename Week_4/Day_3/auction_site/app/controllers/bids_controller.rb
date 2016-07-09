@@ -5,6 +5,7 @@ def create
   if @user
       @bidder_id = @user.id
       @product = Product.find(params[:product_id])
+      
       if (params[:bid][:amount].to_f >= @product.minbid.to_f) && (@bidder_id != @product.user_id)
 
         @bid = Bid.create(amount: params[:bid][:amount], product_id: params[:product_id], user_id: @bidder_id)
