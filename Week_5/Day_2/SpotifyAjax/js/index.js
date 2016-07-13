@@ -3,7 +3,7 @@ var albumsList = $('.albums');
 var trackList = $('.songs');
 
 
-function fetchCharacters (e) {
+function fetchSongs (e) {
    e.preventDefault();
   var request_address = 'https://api.spotify.com/v1/search?type=artist&query=';
   var search_term = $('.search').val();
@@ -38,13 +38,15 @@ function fetchCharacters (e) {
     console.error('OH NO!!', err1, err2, err3);
   }
 
+
+  // This is one way to call the success and fail functions. The other is outlined below
   request.done(createArtists);
   request.fail(handleError);
 }
 
 
 
-$('.js-submit').on('click', fetchCharacters);
+$('.js-submit').on('click', fetchSongs);
 
 // Running this inside createArtists the create so that it binds correctly
 
@@ -81,6 +83,7 @@ $('ul').on('click', 'li.album-name', function (e) {
    var clicked = $(this)
    var album_id = clicked[0].id;
 
+    // This is the other way to make an ajax call
     $.ajax({
       type: 'GET',
       url: 'https://api.spotify.com/v1/albums/'+ album_id + '/tracks',
