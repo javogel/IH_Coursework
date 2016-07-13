@@ -4,24 +4,30 @@ body {
 
 
 .grid {
-  width: 1000;
+  max-width: 600px;
+  margin: auto;
 
 }
 .cell{
-  min-height: 50px;
-  min-width: 50px;
+  min-height: 40px;
+  min-width: 40px;
   display: inline-block;
+  background-color: blue;
 }
 
 .red{
-  background-color: red;
+
 }
 
 .blue{
-  background-color: blue;
+
 }
 
 
 .green{
   background-color: green;
+}
+
+.redforce{
+  background-color: red !important;
 }
