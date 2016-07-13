@@ -49,6 +49,7 @@ $('.js-submit').on('click', fetchCharacters);
 // Running this inside createArtists the create so that it binds correctly
 
 $('ul').on('click', 'li.artist-name', function (e) {
+   albumsList.empty();
    var clicked = $(this)
     if (clicked.is('img')){
       var artist_id = clicked.parentNode.id;
@@ -75,6 +76,7 @@ $('ul').on('click', 'li.artist-name', function (e) {
 
 
 $('ul').on('click', 'li.album-name', function (e) {
+   trackList.empty();
    $('#albums').modal('hide');
    var clicked = $(this)
    var album_id = clicked[0].id;
@@ -85,12 +87,15 @@ $('ul').on('click', 'li.album-name', function (e) {
       success: function(response){
         response.items.forEach(function(track){
           var track_list = $('<li>');
-          track_list.text(" " + track.name);
-          // track_list.attr('data-toggle','modal');
-          // track_list.attr('data-target','song');
+          var link = $('<a>')
+          link.attr('href', track.preview_url)
+          // link.attr('href', track.external_url.spotify)
+          link.text(" " + track.name);
+          link.appendTo(track_list)
           track_list.addClass('track-name');
           track_list.attr('id', track.id);
-          track_list.appendTo(albumsList);
+          track_list.appendTo(trackList);
+
         });
       },
       dataType: 'json'

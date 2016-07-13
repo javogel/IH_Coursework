@@ -4,3 +4,12 @@ li{
   margin: 10px auto;
   font-size: 18px;
 }
+
+.titles {
+
+  margin: 10px;
+}
+
+.modal{
+  overflow: scroll;
+}
