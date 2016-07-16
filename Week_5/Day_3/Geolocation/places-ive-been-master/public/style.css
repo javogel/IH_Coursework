@@ -1,0 +1,14 @@
+#map {
+  height: 75vh;
+  width: 100%;
+}
+
+#get-places {
+  width: 100%;
+  margin-bottom: 10%;
+}
+
+#input-wrapper {
+  margin: auto;
+  width: 25%;
+}
