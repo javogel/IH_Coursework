@@ -1,14 +1,18 @@
 var map;
 var positions_counter=0
+var zoom = 2
 
 $(document).ready(function(){
 
 
   if ("geolocation" in navigator){
     navigator.geolocation.getCurrentPosition(onLocation, onError);
+
+    setTimeout(loadStorage, 4000);
+
   }
 
-  loadStorage();
+
 
 });
 
@@ -24,6 +28,7 @@ function onLocation(position){
     lng: position.coords.longitude
   };
 
+
   createMap(myPosition);
   setupAutocomplete();
 }
@@ -35,20 +40,27 @@ function onError(err){
 function createMap(position){
   map = new google.maps.Map($('#map')[0], {
     center: position,
-    zoom: 17
+    zoom: zoom
   });
+
+
+
     createMarker(position);
 }
 
 function createMarker(position) {
+
+
+
   var marker = new google.maps.Marker({
    position: position,
    map: map
  });
 
 
- console.log("createMarker invoked with this location");
- console.log(position);
+
+ // console.log("createMarker invoked with this location");
+ // console.log(position);
 }
 
 function setupAutocomplete(){
@@ -58,10 +70,11 @@ function setupAutocomplete(){
     var place = autocomplete.getPlace();
     if (place.geometry.location) {
       map.setCenter(place.geometry.location);
-      map.setZoom(17);
+      map.setZoom(zoom);
       console.log(place.geometry.location)
       createMarker(place.geometry.location)
-      savePositionInStorage(place.geometry.location)
+      addInfoToMarker(place.geometry.location, place.formatted_address)
+      savePositionInStorage(place.geometry.location, place.formatted_address)
 
     } else {
       alert("The place has no location...?")
@@ -70,12 +83,16 @@ function setupAutocomplete(){
 }
 
 
-function savePositionInStorage(position){
-  var stringifiedPosition = JSON.stringify(position);
+function savePositionInStorage(position, address){
+  var positionWithAddress = {
+    coord: position,
+    content: address
+  };
+  var stringifiedPosition = JSON.stringify(positionWithAddress);
 
   window.localStorage.setItem(positions_counter, stringifiedPosition);
   positions_counter++;
-}
+};
 
 function loadStorage(){
   var position_count = window.localStorage.length;
@@ -85,16 +102,45 @@ function loadStorage(){
     var current_position = window.localStorage.getItem(i);
 
     position_object = JSON.parse(current_position);
-    console.log("lat")
-    console.log(position_object["lat"])
-    console.log("lng")
-    console.log(position_object["lng"])
+    // console.log("lat")
+    // console.log(position_object["lat"])
+    // console.log("lng")
+    // console.log(position_object["lng"])
 
-    position_to_load = {
-      lat: position_object["lat"],
-      lng: position_object["lng"]
+    // var toClass = {}.toString
+    // alert(toClass.call(position_object.lat))
+    // alert(toClass.call(parseInt(position_object.lat)))
+
+    var position_to_load = {
+      lat: parseInt(position_object.coord.lat),
+      lng: parseInt(position_object.coord.lng)
     };
       createMarker(position_to_load);
+      addInfoToMarker(position_to_load, position_object.content)
+
 
   };
 };
+
+function addInfoToMarker(location, content){
+
+  var contentString = '<div id="content">'+
+            '<div id="address">'+
+            content
+            '</div>'+
+            '</div>';
+
+  var infowindow = new google.maps.InfoWindow({
+          content: contentString
+    });
+
+  var marker = new google.maps.Marker({
+          position: location,
+          map: map,
+          title: "Welcome to"
+        });
+
+  marker.addListener('click', function() {
+          infowindow.open(map, marker);
+        });
+}
