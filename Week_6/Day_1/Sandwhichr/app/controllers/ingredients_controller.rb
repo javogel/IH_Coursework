@@ -1,5 +1,11 @@
 class IngredientsController < ApplicationController
 
+  def create
+    x = Ingredient.create(ingredient_params)
+    render json: x
+  end
+
+
   def show
     ingredient = Ingredient.find_by(id: params[:id])
     unless ingredient
@@ -34,8 +40,13 @@ class IngredientsController < ApplicationController
   end
 
   def index
-    ingredient = Ingredient.all
-    render json: ingredient
+    @ingredients = Ingredient.all
+
+  end
+
+private
+  def ingredient_params
+    params.require(:ingredient).permit(:name, :calories)
   end
 
 
