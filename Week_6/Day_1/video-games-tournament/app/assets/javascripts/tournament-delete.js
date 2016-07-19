@@ -1,14 +1,20 @@
 function deleteTournament (event) {
   event.preventDefault()
 
-  var $form = $('[data-hook~=tourney-form]')
-  var $formAlerts = $('[data-hook~=form-alerts]')
-  var data = $form.serialize()
-  var request = $.post('/api/tournaments', data)
-  request.fail(showError)
-  request.done(respondNewTourney)
+  var tournamentId= $(this).attr("value")
 
-  $formAlerts.empty()
+
+  var request = $.ajax({
+      url: '/api/tournaments',
+      type: 'DELETE',
+      data: {id: tournamentId},
+    });
+
+
+
+  var request = $.delete('/api/tournaments'+ , data)
+  request.fail(showError)
+  request.done(respondDeleteTourney)
 
   function showError (error) {
     console.error('Error adding new tournament.', '\n' + error.responseText)
@@ -16,7 +22,7 @@ function deleteTournament (event) {
     $formAlerts.prepend(buildErrorHtml(message))
   }
 
-  function respondNewTourney (tourney) {
+  function respondDeleteTourney (tourney) {
     var message
     console.log(tourney);
     console.log(request.status)
