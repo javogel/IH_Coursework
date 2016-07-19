@@ -1057,3 +1057,123 @@ Processing by TournamentsController#new as */*
   [1m[35mSQL (0.3ms)[0m  INSERT INTO "tournaments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "blah blah"], ["created_at", "2016-07-18 19:18:46.290887"], ["updated_at", "2016-07-18 19:18:46.290887"]]
   [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
 Completed 200 OK in 4ms (Views: 0.6ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for ::1 at 2016-07-19 09:18:04 +0200
+Processing by TournamentsController#index as HTML
+  Rendered tournaments/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 179ms (Views: 179.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/bootstrap.self-f483ac3b88e1e3370077b698c09eeccfa05db3d0e26a303a9067085517dd829c.css?body=1" for ::1 at 2016-07-19 09:18:04 +0200
+
+
+Started GET "/assets/tournaments.self-f1d54dbf1067216296f8c62cd0d769d2be51dbf4a953369232f3807386d7c07b.css?body=1" for ::1 at 2016-07-19 09:18:04 +0200
+
+
+Started GET "/assets/bootstrap.self-2bbd2c0465f01b1f8270958ddfc2e62a08915f295a35d22df2971eb936cf3c64.js?body=1" for ::1 at 2016-07-19 09:18:05 +0200
+
+
+Started GET "/assets/application.self-d885a0a66bd595c10edb24f8879f94e334d88be0730c4d7c7a7b57c731c09037.css?body=1" for ::1 at 2016-07-19 09:18:05 +0200
+
+
+Started GET "/assets/build-error-html.self-5fe653b6c12fee9832fa0fde9c3a201b39d4d2e094ffa0494e4545c21260ac84.js?body=1" for ::1 at 2016-07-19 09:18:05 +0200
+
+
+Started GET "/assets/tournament-new.self-651e614305259d26d6b696b14ff356c6b3613f0e5d7adf61d1e104ad05f3b512.js?body=1" for ::1 at 2016-07-19 09:18:05 +0200
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-07-19 09:18:05 +0200
+
+
+Started GET "/assets/tournaments-index.self-ae549ecf426b408499148430bdede6fc35266bac623ed81d5d000e12363a181a.js?body=1" for ::1 at 2016-07-19 09:18:05 +0200
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-07-19 09:18:05 +0200
+
+
+Started GET "/assets/jquery_readyselector.self-e8333e4cf02799551960a3d4743eee34a3486889bfb9339716ea7deafb7b5224.js?body=1" for ::1 at 2016-07-19 09:18:05 +0200
+
+
+Started GET "/assets/build-tourney-html.self-ad498f66a5be7bd61752052559cec3db8f612030f0769e16a0b2e8da7a5752fd.js?body=1" for ::1 at 2016-07-19 09:18:05 +0200
+
+
+Started GET "/assets/build-tourney-list-html.self-b543f1c45e64cf6131722a6793a5c941c6738105abbc7cd54724623b02630080.js?body=1" for ::1 at 2016-07-19 09:18:05 +0200
+
+
+Started GET "/assets/tournaments.self-d8ac4eba90c65f43025ec5fba60840863af26310beecab62c6e2983dc07953f9.js?body=1" for ::1 at 2016-07-19 09:18:05 +0200
+
+
+Started GET "/assets/bootstrap.css.map" for ::1 at 2016-07-19 09:18:05 +0200
+
+
+Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1" for ::1 at 2016-07-19 09:18:05 +0200
+
+
+Started GET "/api/tournaments.json" for ::1 at 2016-07-19 09:18:05 +0200
+Processing by TournamentsController#jsonindex as JSON
+  [1m[35mTournament Load (0.4ms)[0m  SELECT "tournaments".* FROM "tournaments"
+Completed 200 OK in 7ms (Views: 6.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/glyphicons-halflings-regular.woff2" for ::1 at 2016-07-19 09:18:05 +0200
+
+
+Started GET "/" for ::1 at 2016-07-19 09:21:49 +0200
+Processing by TournamentsController#index as HTML
+  Rendered tournaments/index.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 180ms (Views: 179.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/bootstrap.self-f483ac3b88e1e3370077b698c09eeccfa05db3d0e26a303a9067085517dd829c.css?body=1" for ::1 at 2016-07-19 09:21:49 +0200
+
+
+Started GET "/assets/tournaments.self-f1d54dbf1067216296f8c62cd0d769d2be51dbf4a953369232f3807386d7c07b.css?body=1" for ::1 at 2016-07-19 09:21:49 +0200
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-07-19 09:21:49 +0200
+
+
+Started GET "/assets/jquery_readyselector.self-e8333e4cf02799551960a3d4743eee34a3486889bfb9339716ea7deafb7b5224.js?body=1" for ::1 at 2016-07-19 09:21:49 +0200
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-07-19 09:21:49 +0200
+
+
+Started GET "/assets/application.self-d885a0a66bd595c10edb24f8879f94e334d88be0730c4d7c7a7b57c731c09037.css?body=1" for ::1 at 2016-07-19 09:21:49 +0200
+
+
+Started GET "/assets/bootstrap.self-2bbd2c0465f01b1f8270958ddfc2e62a08915f295a35d22df2971eb936cf3c64.js?body=1" for ::1 at 2016-07-19 09:21:49 +0200
+
+
+Started GET "/assets/build-error-html.self-5fe653b6c12fee9832fa0fde9c3a201b39d4d2e094ffa0494e4545c21260ac84.js?body=1" for ::1 at 2016-07-19 09:21:49 +0200
+
+
+Started GET "/assets/build-tourney-list-html.self-b543f1c45e64cf6131722a6793a5c941c6738105abbc7cd54724623b02630080.js?body=1" for ::1 at 2016-07-19 09:21:49 +0200
+
+
+Started GET "/assets/build-tourney-html.self-f1bae6a03f1b269b0e54fd7182aeb6a7bc84945ce2005351e5c6ee34745d25a3.js?body=1" for ::1 at 2016-07-19 09:21:49 +0200
+
+
+Started GET "/assets/tournament-new.self-651e614305259d26d6b696b14ff356c6b3613f0e5d7adf61d1e104ad05f3b512.js?body=1" for ::1 at 2016-07-19 09:21:49 +0200
+
+
+Started GET "/assets/tournaments-index.self-ae549ecf426b408499148430bdede6fc35266bac623ed81d5d000e12363a181a.js?body=1" for ::1 at 2016-07-19 09:21:49 +0200
+
+
+Started GET "/assets/tournaments.self-d8ac4eba90c65f43025ec5fba60840863af26310beecab62c6e2983dc07953f9.js?body=1" for ::1 at 2016-07-19 09:21:49 +0200
+
+
+Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1" for ::1 at 2016-07-19 09:21:49 +0200
+
+
+Started GET "/assets/bootstrap.css.map" for ::1 at 2016-07-19 09:21:49 +0200
+
+
+Started GET "/api/tournaments.json" for ::1 at 2016-07-19 09:21:50 +0200
+Processing by TournamentsController#jsonindex as JSON
+  [1m[36mTournament Load (0.3ms)[0m  [1mSELECT "tournaments".* FROM "tournaments"[0m
+Completed 200 OK in 6ms (Views: 4.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/glyphicons-halflings-regular.woff2" for ::1 at 2016-07-19 09:21:50 +0200
