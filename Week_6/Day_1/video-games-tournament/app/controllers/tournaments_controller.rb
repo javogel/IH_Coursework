@@ -12,4 +12,10 @@ class TournamentsController < ApplicationController
     @new = Tournament.create(name: params[:tournament][:name])
     render json: @new
   end
+
+  def destroy
+    item = Tournament.find(params[:id])
+    item.destroy
+    render json: item
+  end
 end

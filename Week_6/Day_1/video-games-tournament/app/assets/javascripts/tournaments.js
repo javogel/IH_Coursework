@@ -6,4 +6,4 @@ $('.ctrl-tournaments.actn-index').ready(tournamentsIndex)
 $('[data-hook~=tourney-add]').on('click', showTournamentForm)
 $('[data-hook~=tourney-form]').on('submit', createTournament)
 
-$('li').on( "click",'[data-hook~=tourney-delete]', deleteTournament);
+$('.ctrl-tournaments.actn-index').on('click', '[data-hook~=tourney-delete]', deleteTournament )
