@@ -1,0 +1,75 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @product.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @product.description %>
+</p>
+
+<p>
+  <strong>Deadline:</strong>
+  <%= @product.deadline %>
+</p>
+
+<h3> Bids: </h3>
+  <ul>
+    <% @product.bid.each do |bid| %>
+      <% unless bid.amount == nil %>
+      <li> <%= bid.amount %> from user_id# <%= bid.user_id %>  </li>
+      <% end %>
+    <% end %>
+  </ul>
+</p>
+
+<% if (@product.deadline > Time.now) %>
+
+
+    <%= form_for [@product, @bid] do |f| %>
+      <%= f.label :amount %>
+      <%= f.number_field :amount %>
+
+<!-- <input type="text" name="bid[email]" placeholder="Email"> -->
+
+      <%= f.submit "bid" %>
+    <% end %>
+  <% else %>
+  <p> Bidding time is over for this product and the winner is <%= @product.highestbidder %> <p>
+<% end %>
+
+
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>
+
+
+<h3> Reviews: </h3>
+  <ul>
+    <% @product.reviews.each do |review| %>
+      <% unless review.description == nil %>
+      <li> <%= review.description %>
+        <% if current_user.id === review.user_id %>
+        <%=link_to "Delete", review_delete_path(:review_id => review.id), :method => :delete, :class => "delete", :confirm => "Are you sure ?"%>
+        <% end %>
+       </li>
+      <% end %>
+    <% end %>
+  </ul>
+
+<% if (current_user) %>
+
+<%= form_for @review do |f| %>
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+  <%= hidden_field_tag :product_id, @product.id %>
+
+<!-- <input type="text" name="bid[email]" placeholder="Email"> -->
+
+  <%= f.submit "Submit Review" %>
+<% end %>
+
+
+<% end %>
