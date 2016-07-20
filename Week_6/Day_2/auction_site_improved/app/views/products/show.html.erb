@@ -52,6 +52,7 @@
       <% unless review.description == nil %>
       <li> <%= review.description %>
         <% if current_user.id === review.user_id %>
+        <%=link_to "Edit", review_update_path(:review_id => review.id), :method => :get, :class => "edit", :confirm => "Are you sure ?"%>
         <%=link_to "Delete", review_delete_path(:review_id => review.id), :method => :delete, :class => "delete", :confirm => "Are you sure ?"%>
         <% end %>
        </li>

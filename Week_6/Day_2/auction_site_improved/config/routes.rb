@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   post '/reviews', to: 'reviews#create'
   delete '/reviews', to: 'reviews#destroy', :as => :review_delete
+  get '/reviews', to: 'reviews#update_form', :as => :review_update
+  patch '/reviews', to: 'reviews#update', :as => :review
   post '/login_validation', to: 'users#login_validation'
   post '/products/:product_id/bid', to: 'bids#create', as: :product_bids
   get '/dashboard', to: 'users#dashboard'

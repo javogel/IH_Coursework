@@ -1,0 +1,8 @@
+<%= form_for @review do |f| %>
+
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+  <%= hidden_field_tag :id, @review.id %>
+
+  <%= f.submit "Save changes" %>
+<% end %>
